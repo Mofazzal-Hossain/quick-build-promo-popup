@@ -1,10 +1,11 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function qbpp_public_assets_enqueue()
 {
     wp_enqueue_style('qbpp-public-style-css', QBPP_PUBLIC_DIR . '/css/public-style.css', null, QBPP_VERSION);
-    wp_enqueue_style('qbpp-public-boostrap-css', QBPP_PUBLIC_DIR . '/css/bootstrap.min.css', null, '5.0.2');
-    wp_enqueue_script('qbpp-public-bootstrap-bundle', QBPP_PUBLIC_DIR . '/js/bootstrap.bundle.min.js', array('jquery'), '5.0.2', true);
+    wp_enqueue_style('qbpp-public-boostrap-css', QBPP_PUBLIC_DIR . '/css/bootstrap.min.css', null, '5.3.3');
+    wp_enqueue_script('qbpp-public-bootstrap-bundle', QBPP_PUBLIC_DIR . '/js/bootstrap.bundle.min.js', array('jquery'), '5.3.3', true);
     wp_enqueue_script('qbpp-public-main-js', QBPP_PUBLIC_DIR . '/js/public-main.js', array('jquery'), QBPP_VERSION, true);
 }
 
@@ -18,7 +19,7 @@ function qbpp_shortcode_metabox()
             'qbpp_popup_shortcode',
             __('Popup Shortcode', 'quick-build-promo-popup'),
             'qbpp_shortcode_metabox_display',
-            array('qbp-popup'),
+            array('qbpp-popup'),
             'side',
             'high'
         );
@@ -29,7 +30,7 @@ add_action('add_meta_boxes', 'qbpp_shortcode_metabox');
 // display shortcode metabox
 function qbpp_shortcode_metabox_display($post)
 {
-    $shortcode = '[qbp_popup id="' . $post->ID . '"]';
+    $shortcode = '[qbpp_popup id="' . $post->ID . '"]';
 ?>
     <div class="qbpp-popup-shortcode-box">
         <input type="text" readonly="readonly" id="qbppPopupShortcode" class="qbpp-popup-shortcode" value="<?php echo esc_attr($shortcode); ?>">
@@ -54,7 +55,7 @@ function qbpp_display_popup($atts)
             'id' => '',
         ],
         $atts,
-        'qbp_popup'
+        'qbpp_popup'
     );
 
     $post_id = $atts['id'];
@@ -102,13 +103,13 @@ function qbpp_display_popup($atts)
 
     ob_start();
     if ($qbpp_active) : ?>
-        <div class="modal fade qbpp-modal qbpp-<?php echo ('custom' == $qbpp_thumbnail_size) ? esc_attr($qbpp_thumbnail_size . '-' . $qbpp_custom_size) : esc_attr($qbpp_thumbnail_size); ?>" id="<?php echo esc_attr($unique_modal_id); ?>" aria-hidden="true" aria-labelledby="qbp-popup-<?php echo esc_attr($post_id); ?>-label" tabindex="-1" data-display="<?php echo esc_attr($qbpp_display); ?>" data-delay="<?php echo esc_attr($qbpp_display_delay); ?>" data-close="<?php echo isset($qbpp_hide_delay) ? esc_attr($qbpp_hide_delay) : ''; ?>" data-selector="<?php echo esc_attr($qbpp_element_selector); ?>">
+        <div class="modal fade qbpp-modal qbpp-<?php echo ('custom' == $qbpp_thumbnail_size) ? esc_attr($qbpp_thumbnail_size . '-' . $qbpp_custom_size) : esc_attr($qbpp_thumbnail_size); ?>" id="<?php echo esc_attr($unique_modal_id); ?>" aria-hidden="true" aria-labelledby="qbpp-popup-<?php echo esc_attr($post_id); ?>-label" tabindex="-1" data-display="<?php echo esc_attr($qbpp_display); ?>" data-delay="<?php echo esc_attr($qbpp_display_delay); ?>" data-close="<?php echo isset($qbpp_hide_delay) ? esc_attr($qbpp_hide_delay) : ''; ?>" data-selector="<?php echo esc_attr($qbpp_element_selector); ?>">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <?php
                         $qbpp_header_content = '
-                                <h5 class="modal-title" id="qbp-popup-' . esc_attr($post_id) . '-label">' . esc_html(get_the_title($post_id)) . '</h5>
+                                <h5 class="modal-title" id="qbpp-popup-' . esc_attr($post_id) . '-label">' . esc_html(get_the_title($post_id)) . '</h5>
                             ';
                         echo wp_kses_post(apply_filters('qbpp_modal_header_content', $qbpp_header_content, $post_id));
                         ?>

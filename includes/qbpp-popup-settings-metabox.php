@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 // Register meta box
 function qbpp_add_meta_box()
 {
@@ -7,7 +9,7 @@ function qbpp_add_meta_box()
         'qbpp_popup_settings',
         __('Popup Settings', 'quick-build-promo-popup'),
         'qbpp_popup_settings_display',
-        'qbp-popup',
+        'qbpp-popup',
         'advanced',
         'high'
     );
@@ -59,7 +61,7 @@ function qbpp_popup_settings_display($post)
 // Save meta box data
 function qbpp_save_meta_box_data($post_id)
 {
-    if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'update-post_' . $post_id)) {
+    if (!isset($_POST['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wpnonce'])), 'update-post_' . $post_id)) {
         return;
     }
 
@@ -84,9 +86,15 @@ function qbpp_save_meta_box_data($post_id)
 
     foreach ($fields as $field) {
         if (isset($_POST[$field])) {
-            $value = $field === 'qbpp_popup_custom_content' || $field === 'qbpp_popup_content_desc'
-                ? wp_kses_post($_POST[$field])
-                : sanitize_text_field($_POST[$field]);
+            // Retrieve the raw input and unslash it
+            $raw_value = sanitize_text_field(wp_unslash($_POST[$field]));
+    
+            // Sanitize the value based on the field type
+            $value = ($field === 'qbpp_popup_custom_content' || $field === 'qbpp_popup_content_desc')
+                ? wp_kses_post($raw_value)
+                : $raw_value;
+    
+            // Save the sanitized value to the post meta
             update_post_meta($post_id, '_' . $field, $value);
         }
     }
