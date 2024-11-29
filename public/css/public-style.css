@@ -1,0 +1,82 @@
+.qbpp-modal.modal {
+  left: 50%;
+  transform: translateX(-50%);
+  color: #000;
+}
+
+.qbpp-modal .modal-header {
+  padding: 12px 1rem;
+}
+.qbpp-modal .modal-title {
+  font-weight: 600;
+}
+.qbpp-modal .modal-body a {
+  display: block;
+  text-align: center;
+}
+.qbpp-modal.qbpp-fit-screen .qbpp-popup-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.qbpp-modal.qbpp-original .qbpp-popup-image {
+  width: auto;
+  height: auto;
+}
+
+.qbpp-modal.qbpp-landscape .qbpp-popup-image {
+  width: 800px;
+  height: calc(800px * 2 / 3);
+  object-fit: cover;
+}
+.qbpp-modal.qbpp-portrait .qbpp-popup-image {
+  width: 10240px;
+  height: calc(1024px * 2 / 3);
+  object-fit: cover;
+}
+
+.qbpp-modal .modal-dialog {
+  max-width: 700px;
+}
+.qbpp-modal .modal-content {
+  border-radius: 6px;
+}
+.qbpp-modal .btn-close {
+  transition: all 0.2s linear;
+}
+.qbpp-modal .btn-close:focus {
+  outline: 0;
+  box-shadow: none;
+}
+.qbpp-modal .btn-close:hover {
+  color: #d54e21;
+  opacity: 1;
+}
+
+.qbpp-modal .qbpp-custom-content .aligncenter {
+  margin-bottom: 0;
+}
+.qbpp-popup-image.qbpp_exist_content {
+  margin-bottom: 15px;
+}
+.qbpp-modal .modal-body p,
+.qbpp-modal .modal-body h6,
+.qbpp-modal .modal-body h5,
+.qbpp-modal .modal-body h4,
+.qbpp-modal .modal-body h3,
+.qbpp-modal .modal-body h2,
+.qbpp-modal .modal-body h1 {
+  margin-bottom: 12px;
+}
+
+.qbpp-modal .align-left {
+  text-align: left;
+}
+
+.qbpp-modal .align-center {
+  text-align: center;
+}
+
+.qbpp-modal .align-right {
+  text-align: right;
+}
