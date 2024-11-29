@@ -1,3 +1,9 @@
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+?>
+
 <div class="qbpp-popup-settings">
     <!-- Popup Active -->
     <div class="qbpp-group-wrap">

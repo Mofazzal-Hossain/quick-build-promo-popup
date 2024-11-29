@@ -2,7 +2,7 @@
 
 /*
  * Plugin Name:       Quick Build Promo Popup
- * Plugin URI:        https://example.com/my-plugin/
+ * Plugin URI:        https://github.com/Mofazzal-Hossain/quick-build-promo-popup
  * Description:       Quick Build Promo Popup is a versatile and user-friendly WordPress plugin that simplifies the creation, management, and customization of promotional popups and discounts.
  * VERSION:           1.0.0
  * Author:            Mofazzal Hossain
@@ -11,6 +11,8 @@
  * Text Domain:       quick-build-promo-popup
  * Domain Path:       /languages
 */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Define a QBPP_VERSION constant
 define('QBPP_VERSION', time());
@@ -57,9 +59,9 @@ function qbpp_posts_columns($columns)
 {
     if ('qbp-popup' === get_post_type()) {
         unset($columns['date']);
-        $columns['id'] = __('Popup ID', 'qbpp');
-        $columns['shortcode'] = __('Shortcode', 'qbpp');
-        $columns['date'] = __('Date', 'qbpp');
+        $columns['id'] = __('Popup ID', 'quick-build-promo-popup');
+        $columns['shortcode'] = __('Shortcode', 'quick-build-promo-popup');
+        $columns['date'] = __('Date', 'quick-build-promo-popup');
     }
 
     return $columns;
@@ -103,7 +105,7 @@ function qbpp_filter_by_popup($post_type)
         );
         $popup_posts = get_posts($args);
         $popup_filter_id = 0;
-        if (isset($_GET['qbpp_popup_filter_nonce']) && wp_verify_nonce($_GET['qbpp_popup_filter_nonce'], 'qbpp_filter_by_popup')) {
+        if (isset($_GET['qbpp_popup_filter_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['qbpp_popup_filter_nonce'])), 'qbpp_filter_by_popup')) {
             $popup_filter_id = isset($_GET['popup_id']) ? sanitize_text_field($_GET['popup_id']) : '';
         }
         wp_nonce_field('qbpp_filter_by_popup', 'qbpp_popup_filter_nonce');
@@ -111,9 +113,9 @@ function qbpp_filter_by_popup($post_type)
 ?>
 
         <select name="popup_id" id="popup_id">
-            <option disabled selected><?php echo esc_html_e('Select a popup', 'qbpp'); ?></option>
+            <option disabled selected><?php echo esc_html_e('Select a popup', 'quick-build-promo-popup'); ?></option>
             <?php foreach ($popup_posts as $popup_post) :
-                $selected = ($popup_post->ID == $popup_filter_id) ? __('selected', 'qbpp') : '';
+                $selected = ($popup_post->ID == $popup_filter_id) ? __('selected', 'quick-build-promo-popup') : '';
             ?>
                 <option value="<?php echo esc_attr($popup_post->ID); ?>" <?php echo esc_attr($selected); ?>><?php echo esc_html($popup_post->post_title); ?></option>
             <?php endforeach; ?>
@@ -135,11 +137,11 @@ function qbpp_pre_post($query)
         return;
     }
 
-    if (!isset($_GET['qbpp_popup_filter_nonce']) || !wp_verify_nonce($_GET['qbpp_popup_filter_nonce'], 'qbpp_filter_by_popup')) {
+    if (!isset($_GET['qbpp_popup_filter_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['qbpp_popup_filter_nonce'])), 'qbpp_filter_by_popup')) {
         return;
     }
 
-    if (isset($_GET['qbpp_popup_filter_nonce']) && wp_verify_nonce($_GET['qbpp_popup_filter_nonce'], 'qbpp_filter_by_popup')) {
+    if (isset($_GET['qbpp_popup_filter_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['qbpp_popup_filter_nonce'])), 'qbpp_filter_by_popup')) {
         $popup_filter_id = isset($_GET['popup_id']) ? sanitize_text_field($_GET['popup_id']) : '';
         if (!empty($popup_filter_id)) {
             $query->set('p', $popup_filter_id);
@@ -158,6 +160,6 @@ add_action('pre_get_posts', 'qbpp_pre_post');
 // register qbpp shortcodes
 function qbpp_register_popup_shortcodes()
 {
-    add_shortcode('qbp_popup', 'qbpp_display_popup');
+    add_shortcode('qbpp_popup', 'qbpp_display_popup');
 }
 add_action('init', 'qbpp_register_popup_shortcodes');

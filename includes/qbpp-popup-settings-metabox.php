@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 // Register meta box
 function qbpp_add_meta_box()
 {
@@ -59,7 +61,7 @@ function qbpp_popup_settings_display($post)
 // Save meta box data
 function qbpp_save_meta_box_data($post_id)
 {
-    if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'update-post_' . $post_id)) {
+    if (!isset($_POST['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wpnonce'])), 'update-post_' . $post_id)) {
         return;
     }
 

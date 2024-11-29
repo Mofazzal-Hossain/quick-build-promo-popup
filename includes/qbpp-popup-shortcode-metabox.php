@@ -1,10 +1,11 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function qbpp_public_assets_enqueue()
 {
     wp_enqueue_style('qbpp-public-style-css', QBPP_PUBLIC_DIR . '/css/public-style.css', null, QBPP_VERSION);
-    wp_enqueue_style('qbpp-public-boostrap-css', QBPP_PUBLIC_DIR . '/css/bootstrap.min.css', null, '5.0.2');
-    wp_enqueue_script('qbpp-public-bootstrap-bundle', QBPP_PUBLIC_DIR . '/js/bootstrap.bundle.min.js', array('jquery'), '5.0.2', true);
+    wp_enqueue_style('qbpp-public-boostrap-css', QBPP_PUBLIC_DIR . '/css/bootstrap.min.css', null, '5.3.3');
+    wp_enqueue_script('qbpp-public-bootstrap-bundle', QBPP_PUBLIC_DIR . '/js/bootstrap.bundle.min.js', array('jquery'), '5.3.3', true);
     wp_enqueue_script('qbpp-public-main-js', QBPP_PUBLIC_DIR . '/js/public-main.js', array('jquery'), QBPP_VERSION, true);
 }
 
