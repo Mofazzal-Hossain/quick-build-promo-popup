@@ -8,12 +8,12 @@ function qbpp_register_popup_cpt()
      */
 
     $labels = [
-        "name" => esc_html__("QBPP Popup", "quick-build-promo-popup"),
+        "name" => esc_html__("Popup", "quick-build-promo-popup"),
         "singular_name" => esc_html__("qbp-popup", "quick-build-promo-popup"),
-        "menu_name" => esc_html__("QBPP Popup", "quick-build-promo-popup"),
+        "menu_name" => esc_html__("Promo Popup", "quick-build-promo-popup"),
         "all_items" => esc_html__("All Popup", "quick-build-promo-popup"),
-        "add_new" => esc_html__("Add New Popup", "quick-build-promo-popup"),
-        "add_new_item" => esc_html__("Add New Popup", "quick-build-promo-popup"),
+        "add_new" => esc_html__("Add New", "quick-build-promo-popup"),
+        "add_new_item" => esc_html__("Add New", "quick-build-promo-popup"),
         "edit_item" => esc_html__("Edit Popup", "quick-build-promo-popup"),
         "new_item" => esc_html__("New Popup", "quick-build-promo-popup"),
         "view_item" => esc_html__("View Popup", "quick-build-promo-popup"),
@@ -31,7 +31,7 @@ function qbpp_register_popup_cpt()
     ];
 
     $args = [
-        "label" => esc_html__("qbpp Popup", "quick-build-promo-popup"),
+        "label" => esc_html__("qbp Popup", "quick-build-promo-popup"),
         "labels" => $labels,
         "description" => "",
         "public" => true,
@@ -50,14 +50,14 @@ function qbpp_register_popup_cpt()
         "map_meta_cap" => true,
         "hierarchical" => false,
         "can_export" => false,
-        "rewrite" => ["slug" => "qbpp-popup", "with_front" => true],
+        "rewrite" => ["slug" => "qbp-popup", "with_front" => true],
         "query_var" => true,
         "menu_icon" => "dashicons-plus-alt",
         "supports" => ["title"],
         "show_in_graphql" => false,
     ];
 
-    register_post_type("qbpp-popup", $args);
+    register_post_type("qbp-popup", $args);
 }
 
 add_action('init', 'qbpp_register_popup_cpt');

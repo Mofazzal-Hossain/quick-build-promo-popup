@@ -78,7 +78,7 @@ jQuery(document).ready(function () {
     if (dimensions) {
       var width = dimensions[1];
       var height = dimensions[2];
-      jQuery(".qbpp-modal .qbpp-popup-image").css({
+      jQuery(".qbpp-modal .qbp-popup-image").css({
         width: width + "px",
         height: height + "px",
       });

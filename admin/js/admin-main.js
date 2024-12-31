@@ -23,12 +23,12 @@
 
     setAlignment(
       "#qbppPopupContentHeadingAlign span",
-      "#qbpp_popup_content_heading",
+      "#qbp_popup_content_heading",
       "#qbpp_heading_align"
     );
     setAlignment(
       "#qbppPopupContentDescAlign span",
-      "#qbpp_popup_content_desc",
+      "#qbp_popup_content_desc",
       "#qbpp_desc_align"
     );
 
@@ -40,12 +40,12 @@
     });
 
     // Auto-hide popup
-    $("#qbpp_popup_auto_hide").on("change", function () {
+    $("#qbp_popup_auto_hide").on("change", function () {
       $("#qbppPopupHideDelay").toggle(this.checked);
     });
 
     // Popup size
-    $("#qbpp_popup_size").on("change", function () {
+    $("#qbp_popup_size").on("change", function () {
       console.log('working');
       var selectedValue = $(this).val();
       $("#qbppImageAlign").fadeOut();

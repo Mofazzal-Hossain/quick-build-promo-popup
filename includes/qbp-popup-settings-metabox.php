@@ -6,10 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function qbpp_add_meta_box()
 {
     add_meta_box(
-        'qbpp_popup_settings',
+        'qbp_popup_settings',
         __('Popup Settings', 'quick-build-promo-popup'),
-        'qbpp_popup_settings_display',
-        'qbpp-popup',
+        'qbp_popup_settings_display',
+        'qbp-popup',
         'advanced',
         'high'
     );
@@ -17,17 +17,17 @@ function qbpp_add_meta_box()
 add_action('add_meta_boxes', 'qbpp_add_meta_box');
 
 // Meta box callback function
-function qbpp_popup_settings_display($post)
+function qbp_popup_settings_display($post)
 {
 
     $meta_fields = [
-        'qbpp_popup_active', 'qbpp_image_id', 'qbpp_popup_url',
-        'qbpp_popup_content_heading', 'qbpp_popup_content_desc',
-        'qbpp_custom_content_active', 'qbpp_popup_custom_content',
+        'qbp_popup_active', 'qbpp_image_id', 'qbp_popup_url',
+        'qbp_popup_content_heading', 'qbp_popup_content_desc',
+        'qbpp_custom_content_active', 'qbp_popup_custom_content',
         'qbpp_heading_align', 'qbpp_desc_align',
-        'qbpp_popup_display', 'qbpp_display_popup_delay',
-        'qbpp_popup_auto_hide', 'qbpp_popup_hide_delay',
-        'qbpp_element_selector', 'qbpp_popup_size',
+        'qbp_popup_display', 'qbpp_display_popup_delay',
+        'qbp_popup_auto_hide', 'qbp_popup_hide_delay',
+        'qbpp_element_selector', 'qbp_popup_size',
         'qbpp_custom_width', 'qbpp_custom_height',
     ];
 
@@ -55,7 +55,7 @@ function qbpp_popup_settings_display($post)
 
 
     // settings template
-    include 'qbpp-popup-settings-template.php';
+    include 'qbp-popup-settings-template.php';
 }
 
 // Save meta box data
@@ -74,13 +74,13 @@ function qbpp_save_meta_box_data($post_id)
     }
 
     $fields = [
-        'qbpp_popup_active', 'qbpp_image_id', 'qbpp_popup_url',
-        'qbpp_popup_content_heading', 'qbpp_heading_align',
-        'qbpp_popup_content_desc', 'qbpp_desc_align',
-        'qbpp_custom_content_active', 'qbpp_popup_custom_content',
-        'qbpp_popup_display', 'qbpp_display_popup_delay',
-        'qbpp_popup_auto_hide', 'qbpp_popup_hide_delay',
-        'qbpp_element_selector', 'qbpp_popup_size',
+        'qbp_popup_active', 'qbpp_image_id', 'qbp_popup_url',
+        'qbp_popup_content_heading', 'qbpp_heading_align',
+        'qbp_popup_content_desc', 'qbpp_desc_align',
+        'qbpp_custom_content_active', 'qbp_popup_custom_content',
+        'qbp_popup_display', 'qbpp_display_popup_delay',
+        'qbp_popup_auto_hide', 'qbp_popup_hide_delay',
+        'qbpp_element_selector', 'qbp_popup_size',
         'qbpp_custom_width', 'qbpp_custom_height',
     ];
 
@@ -90,7 +90,7 @@ function qbpp_save_meta_box_data($post_id)
             $raw_value = sanitize_text_field(wp_unslash($_POST[$field]));
     
             // Sanitize the value based on the field type
-            $value = ($field === 'qbpp_popup_custom_content' || $field === 'qbpp_popup_content_desc')
+            $value = ($field === 'qbp_popup_custom_content' || $field === 'qbp_popup_content_desc')
                 ? wp_kses_post($raw_value)
                 : $raw_value;
     

@@ -23,9 +23,9 @@ define('QBPP_ADMIN_DIR', QBPP_PLUGIN_DIR . 'admin');
 
 
 // files require
-require_once plugin_dir_path(__FILE__) . 'includes/qbpp-popup-cpt.php';
-require_once plugin_dir_path(__FILE__) . 'includes/qbpp-popup-settings-metabox.php';
-require_once plugin_dir_path(__FILE__) . 'includes/qbpp-popup-shortcode-metabox.php';
+require_once plugin_dir_path(__FILE__) . 'includes/qbp-popup-cpt.php';
+require_once plugin_dir_path(__FILE__) . 'includes/qbp-popup-settings-metabox.php';
+require_once plugin_dir_path(__FILE__) . 'includes/qbp-popup-shortcode-metabox.php';
 
 
 // admin assets enqueue
@@ -33,7 +33,7 @@ function qbpp_admin_assets_enqueue($screen)
 {
     $current_post_type = get_post_type();
 
-    if (('post-new.php' == $screen || 'post.php' == $screen) && 'qbpp-popup' == $current_post_type) {
+    if (('post-new.php' == $screen || 'post.php' == $screen) && 'qbp-popup' == $current_post_type) {
         wp_enqueue_media();
         wp_enqueue_script('wp-editor');
         wp_enqueue_script('wp-mediaelement');
@@ -51,7 +51,7 @@ add_action('admin_enqueue_scripts', 'qbpp_admin_assets_enqueue');
 // add columns on the popup 
 function qbpp_posts_columns($columns)
 {
-    if ('qbpp-popup' === get_post_type()) {
+    if ('qbp-popup' === get_post_type()) {
         unset($columns['date']);
         $columns['id'] = __('Popup ID', 'quick-build-promo-popup');
         $columns['shortcode'] = __('Shortcode', 'quick-build-promo-popup');
@@ -64,45 +64,45 @@ add_filter('manage_posts_columns', 'qbpp_posts_columns');
 
 
 // update column value
-function qbpp_popup_update_column($column, $post_id)
+function qbp_popup_update_column($column, $post_id)
 {
-    if ('qbpp-popup' === get_post_type()) {
+    if ('qbp-popup' === get_post_type()) {
         if ('id' === $column) {
             echo esc_html($post_id);
         } else if ('shortcode' === $column) {
-            echo '[qbpp_popup id="' . esc_html($post_id) . '"]';
+            echo '[qbp_popup id="' . esc_html($post_id) . '"]';
         }
     }
 }
-add_action('manage_posts_custom_column', 'qbpp_popup_update_column', 10, 2);
+add_action('manage_posts_custom_column', 'qbp_popup_update_column', 10, 2);
 
 // sortable popups post id 
-function qbpp_popup_column_sort($column)
+function qbp_popup_column_sort($column)
 {
-    if ('qbpp-popup' === get_post_type()) {
+    if ('qbp-popup' === get_post_type()) {
         $column['id'] = 'id';
     }
 
     return $column;
 }
-add_filter('manage_edit-qbp-popup_sortable_columns', 'qbpp_popup_column_sort');
+add_filter('manage_edit-qbp-popup_sortable_columns', 'qbp_popup_column_sort');
 
 
 // popup id filter
 function qbpp_filter_by_popup($post_type)
 {
 
-    if ('qbpp-popup' === $post_type) {
+    if ('qbp-popup' === $post_type) {
         $args = array(
-            'post_type' => 'qbpp-popup',
+            'post_type' => 'qbp-popup',
             'post_status' => 'publish'
         );
         $popup_posts = get_posts($args);
         $popup_filter_id = 0;
-        if (isset($_GET['qbpp_popup_filter_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['qbpp_popup_filter_nonce'])), 'qbpp_filter_by_popup')) {
+        if (isset($_GET['qbp_popup_filter_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['qbp_popup_filter_nonce'])), 'qbpp_filter_by_popup')) {
             $popup_filter_id = isset($_GET['popup_id']) ? sanitize_text_field(wp_unslash($_GET['popup_id'])) : '';
         }
-        wp_nonce_field('qbpp_filter_by_popup', 'qbpp_popup_filter_nonce');
+        wp_nonce_field('qbpp_filter_by_popup', 'qbp_popup_filter_nonce');
 
 ?>
 
@@ -131,11 +131,11 @@ function qbpp_pre_post($query)
         return;
     }
 
-    if (!isset($_GET['qbpp_popup_filter_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['qbpp_popup_filter_nonce'])), 'qbpp_filter_by_popup')) {
+    if (!isset($_GET['qbp_popup_filter_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['qbp_popup_filter_nonce'])), 'qbpp_filter_by_popup')) {
         return;
     }
 
-    if (isset($_GET['qbpp_popup_filter_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['qbpp_popup_filter_nonce'])), 'qbpp_filter_by_popup')) {
+    if (isset($_GET['qbp_popup_filter_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['qbp_popup_filter_nonce'])), 'qbpp_filter_by_popup')) {
         $popup_filter_id = isset($_GET['popup_id']) ? sanitize_text_field(wp_unslash($_GET['popup_id'])) : '';
         if (!empty($popup_filter_id)) {
             $query->set('p', $popup_filter_id);
@@ -154,6 +154,6 @@ add_action('pre_get_posts', 'qbpp_pre_post');
 // register qbpp shortcodes
 function qbpp_register_popup_shortcodes()
 {
-    add_shortcode('qbpp_popup', 'qbpp_display_popup');
+    add_shortcode('qbp_popup', 'qbpp_display_popup');
 }
 add_action('init', 'qbpp_register_popup_shortcodes');
