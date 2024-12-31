@@ -262,18 +262,20 @@ body.post-type-qbp-popup {
 /* templates  */
 .qbpp-field-box .template-wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
 }
 
 .template-wrapper label.radio-card {
   cursor: pointer;
   flex: 1;
+  user-select: none;
 }
 
 .template-wrapper label.radio-card .card-content-wrapper {
   background: #fff;
   border-radius: 6px;
-  min-height: 200px;
+ height: 150px;
   padding: 15px;
   display: grid;
   box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.04);
@@ -367,6 +369,8 @@ body.post-type-qbp-popup {
   max-width: 100%;
   display: block;
   vertical-align: middle;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media only screen and (max-width: 767.98px) {

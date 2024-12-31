@@ -227,7 +227,7 @@ if (! defined('ABSPATH')) exit; // Exit if accessed directly
                     <div class="card-content-wrapper">
                         <span class="check-icon"></span>
                         <div class="card-content">
-                            <img src="https://image.freepik.com/free-vector/group-friends-giving-high-five_23-2148363170.jpg" alt="" />
+                            <img src="<?php echo QBPP_ADMIN_DIR . '/images/template-1.png';?>" alt="" />
                         </div>
                     </div>
                 </label>
@@ -252,8 +252,8 @@ if (! defined('ABSPATH')) exit; // Exit if accessed directly
                         </div>
                     </div>
                 </label>
-                <!-- template 2 -->
-                <label for="template2" class="radio-card qbpp-cooming-soon">
+                <!-- cooming soon -->
+                <label class="radio-card qbpp-cooming-soon">
                     <div class="card-content-wrapper">
                         <h3><?php echo esc_html_e('Cooming Soon', 'quick-build-promo-popup'); ?></h3>
                     </div>
