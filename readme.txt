@@ -20,6 +20,15 @@ Quick Build Promo Popup is a versatile and user-friendly WordPress plugin that s
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Use the Quick Build Promo Popup settings page to configure the plugin.
 
+== Features ==
+1. **Create Unlimited Popups** – Design and display as many popups as needed without limitations.
+2. **Customizable Content** – Add personalized text, images, and other elements to suit your needs.
+3. **Flexible Display Events** – Trigger popups on page load, click, exit intent, or custom user interactions.
+4. **Popup Display Delay** – Set a specific delay time before the popup appears.
+5. **Automatic Closing** – Configure popups to close automatically after a set duration.
+6. **Pre-designed Templates** – Choose from a variety of popup templates for quick setup.
+7. **Responsive and Mobile-friendly** – Ensure popups look great on all devices, including desktops, tablets, and smartphones.
+
 == Frequently Asked Questions ==
 
 = How do I create a new popup? =
@@ -72,9 +81,14 @@ add_filter('qbpp_modal_body_content', 'custom_qbcp_modal_body', 10, 2);
 
 == Screenshots ==
 
-1. **Popup Configuration** - Screenshot showing the popup configuration options.
-2. **Popup Example** - Screenshot showing an example of a popup created with the plugin.
-
+1. **Popup Configuration** – This screenshot shows the popup configuration options available in the plugin.
+   ![Popup Configuration](assets/screenshot-1.png) (assets/screenshot-3.png)
+2. **Popup Templates** – This screenshot highlights the available popup templates in the plugin.
+   ![Popup Templates](assets/screenshot-2.png)
+3. **Popup List** – This screenshot highlights the list of popups in the plugin.
+   ![Popup List](assets/screenshot-4.png)
+3. **Popup Example** – This screenshot shows an example of a popup created with the plugin.
+   ![Popup Example](assets/screenshot-4.png)
 
 == Changelog ==
 
