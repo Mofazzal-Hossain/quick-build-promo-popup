@@ -24,6 +24,8 @@ body.post-type-qbp-popup {
 .qbp-popup-settings .qbpp-group-wrap .qbpp-field-box {
   flex: 1;
   padding: 15px;
+  box-sizing: border-box;
+  width: 100%;
 }
 .qbp-popup-settings .qbpp-group-wrap .qbpp-field-box input {
   margin-top: 0px;
@@ -275,17 +277,22 @@ body.post-type-qbp-popup {
 .template-wrapper label.radio-card .card-content-wrapper {
   background: #fff;
   border-radius: 6px;
- height: 150px;
+  height: 150px;
   padding: 15px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.04);
   transition: 200ms linear;
   border: 2px solid #f1f1f1;
   position: relative;
   z-index: 1;
 }
+.template-wrapper label.radio-card .card-content-wrapper .card-content{
+  flex: 1;
+}
 .template-wrapper .qbpp-cooming-soon .card-content-wrapper::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -371,8 +378,44 @@ body.post-type-qbp-popup {
   vertical-align: middle;
   height: 100%;
   object-fit: cover;
+  border-radius: 5px;
 }
+@media only screen and (max-width: 1600.98px) {
+  .template-wrapper label.radio-card {
+    flex: auto;
+    flex-basis: calc(50% - 15px);
+  }
+  .qbpp-field-box .template-wrapper {
+    gap: 16px;
+  }
+  .template-wrapper label.radio-card .card-content-wrapper {
+    min-height: 150px;
+    height: auto;
+    flex-direction: row;
+  }
 
+  .template-wrapper label.radio-card .check-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .template-wrapper label.radio-card .check-icon:before {
+    background-size: 10px;
+  }
+}
+@media only screen and (max-width: 1199.98px) {
+  .qbp-popup-settings .qbpp-group-wrap {
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .qbp-popup-settings .qbpp-group-wrap .qbpp-label-box {
+    width: 100%;
+  }
+
+  .qbp-popup-settings .qbpp-group-wrap {
+    flex-direction: row;
+  }
+}
 @media only screen and (max-width: 767.98px) {
   .qbp-popup-settings .qbpp-group-wrap {
     flex-direction: column;
@@ -381,5 +424,15 @@ body.post-type-qbp-popup {
   }
   .qbp-popup-settings .qbpp-group-wrap .qbpp-label-box {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .qbp-popup-settings .qbpp-group-wrap {
+    flex-direction: row;
+  }
+  .qbpp-field-box .template-wrapper {
+    gap: 16px;
+    flex-direction: column;
   }
 }

@@ -231,25 +231,16 @@ if (! defined('ABSPATH')) exit; // Exit if accessed directly
                         </div>
                     </div>
                 </label>
-
-                <!-- template 2 -->
-                <label for="template2" class="radio-card">
-                    <input type="radio" name="qbpp_template" value="template2" id="template2" />
+                <!-- cooming soon -->
+                <label class="radio-card qbpp-cooming-soon">
                     <div class="card-content-wrapper">
-                        <span class="check-icon"></span>
-                        <div class="card-content">
-                            <img src="https://image.freepik.com/free-vector/people-putting-puzzle-pieces-together_52683-28610.jpg" alt="" />
-                        </div>
+                        <h3><?php echo esc_html_e('Cooming Soon', 'quick-build-promo-popup'); ?></h3>
                     </div>
                 </label>
-                <!-- template 3 -->
-                <label for="template3" class="radio-card">
-                    <input type="radio" name="qbpp_template" value="template3" id="template3" />
+                <!-- cooming soon -->
+                <label class="radio-card qbpp-cooming-soon">
                     <div class="card-content-wrapper">
-                        <span class="check-icon"></span>
-                        <div class="card-content">
-                            <img src="https://image.freepik.com/free-vector/people-putting-puzzle-pieces-together_52683-28610.jpg" alt="" />
-                        </div>
+                        <h3><?php echo esc_html_e('Cooming Soon', 'quick-build-promo-popup'); ?></h3>
                     </div>
                 </label>
                 <!-- cooming soon -->

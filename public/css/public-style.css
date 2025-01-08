@@ -7,8 +7,15 @@
 .qbpp-modal .modal-header {
   padding: 12px 1rem;
 }
+.qbpp-modal .modal-header button i{
+  transition: all 0.2s linear;
+}
+.qbpp-modal .modal-header button:hover i{
+  color: #dc3545
+}
 .qbpp-modal .modal-title {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 24px;
 }
 .qbpp-modal .modal-body a {
   display: block;
@@ -41,9 +48,26 @@
 .qbpp-modal .modal-content {
   border-radius: 6px;
 }
-.qbpp-modal .btn-close {
-  transition: all 0.2s linear;
+.qbpp-modal .modal-content h2{
+  font-size: 28px;
 }
+.qbpp-modal .modal-content h2{
+  font-size: 24px;
+}
+.qbpp-modal .modal-content h3{
+  font-size: 22px;
+}
+.qbpp-modal .modal-content h4{
+  font-size: 20px;
+}
+.qbpp-modal .modal-content h5{
+  font-size: 18px;
+}
+.qbpp-modal .modal-content h5{
+  font-size: 16px;
+}
+
+
 .qbpp-modal .btn-close:focus {
   outline: 0;
   box-shadow: none;
@@ -67,8 +91,13 @@
 .qbpp-modal .modal-body h2,
 .qbpp-modal .modal-body h1 {
   margin-bottom: 12px;
+  font-weight: 600;
 }
-
+.qbpp-modal .modal-body p{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
 .qbpp-modal .align-left {
   text-align: left;
 }
