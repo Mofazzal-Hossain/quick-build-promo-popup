@@ -7,11 +7,11 @@
 .qbpp-modal .modal-header {
   padding: 12px 1rem;
 }
-.qbpp-modal .modal-header button i{
+.qbpp-modal .modal-header button svg{
   transition: all 0.2s linear;
 }
-.qbpp-modal .modal-header button:hover i{
-  color: #dc3545
+.qbpp-modal .modal-header button:hover svg{
+  fill: #dc3545
 }
 .qbpp-modal .modal-title {
   font-weight: 700;

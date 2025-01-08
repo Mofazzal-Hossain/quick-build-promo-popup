@@ -1,11 +1,10 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
 function qbpp_public_assets_enqueue()
 {
     wp_enqueue_style('qbpp-public-style-css', QBPP_PUBLIC_DIR . '/css/public-style.css', null, QBPP_VERSION);
     wp_enqueue_style('qbpp-public-boostrap-css', QBPP_PUBLIC_DIR . '/css/bootstrap.min.css', null, '5.3.3');
-    wp_enqueue_style('qbpp-public-remixicon-css', '//cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css', null, '4.6.0');
     wp_enqueue_script('qbpp-public-bootstrap-bundle', QBPP_PUBLIC_DIR . '/js/bootstrap.bundle.min.js', array('jquery'), '5.3.3', true);
     wp_enqueue_script('qbpp-public-main-js', QBPP_PUBLIC_DIR . '/js/public-main.js', array('jquery'), QBPP_VERSION, true);
 }
@@ -115,7 +114,9 @@ function qbpp_display_popup($atts)
                         echo wp_kses_post(apply_filters('qbpp_modal_header_content', $qbpp_header_content, $post_id));
                         ?>
                         <button type="button" class="p-0 border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
-                            <i class="ri-close-large-line"></i>
+                            <svg height="20"  width="20"  id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512"xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z" />
+                            </svg>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -128,10 +129,10 @@ function qbpp_display_popup($atts)
                                 <p class="qbp-popup-desc align-' . $qbpp_desc_align . '">' . wp_kses_post($qbp_popup_content_desc) . '</p>
                             </div>
                         ';
-                        if($has_custom_content){
+                        if ($has_custom_content) {
                             $qbpp_modal_body_content .= '<div class="qbp-popup-custom-content">' . wp_kses_post($qbp_popup_custom_content) . '</div>';
                         }
-                        
+
                         echo wp_kses_post(apply_filters('qbpp_modal_body_content', $qbpp_modal_body_content, $post_id));
                         ?>
                     </div>

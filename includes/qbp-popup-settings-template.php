@@ -227,7 +227,7 @@ if (! defined('ABSPATH')) exit; // Exit if accessed directly
                     <div class="card-content-wrapper">
                         <span class="check-icon"></span>
                         <div class="card-content">
-                            <img src="<?php echo QBPP_ADMIN_DIR . '/images/template-1.png';?>" alt="" />
+                            <img src="<?php echo esc_url(QBPP_ADMIN_DIR . '/images/template-1.png');?>" alt="Template image" />
                         </div>
                     </div>
                 </label>

@@ -15,7 +15,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Define a QBPP_VERSION constant
-define('QBPP_VERSION', time());
+define('QBPP_VERSION', '1.0.0');
 define('QBPP_PLUGIN_DIR', plugin_dir_url(__FILE__));
 define('QBPP_PUBLIC_DIR', QBPP_PLUGIN_DIR . 'public');
 define('QBPP_ADMIN_DIR', QBPP_PLUGIN_DIR . 'admin');
@@ -45,8 +45,6 @@ function qbpp_admin_assets_enqueue($screen)
     }
 }
 add_action('admin_enqueue_scripts', 'qbpp_admin_assets_enqueue');
-
-
 
 // add columns on the popup 
 function qbpp_posts_columns($columns)
