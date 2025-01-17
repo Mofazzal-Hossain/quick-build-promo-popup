@@ -1,6 +1,21 @@
 (function ($) {
   "use strict";
   $(document).ready(function () {
+
+    // Handle click event on tab buttons
+    $('#qbppTabs .nav-link').on('click', function (e) {
+      e.preventDefault(); 
+      $('#qbppTabs .nav-link').removeClass('active');
+      $('#qbppTabsContent .tab-pane').removeClass('active');
+      
+      $(this).addClass('active');
+      const targetPaneId = $(this).attr('id').replace('-tab', '');
+      $('#' + targetPaneId).addClass('active');
+      
+    });
+
+    
+
     // Element selectors
     var qbppDisplayDelay = $("#qbppDisplayDelay");
     var qbppElementSelector = $("#qbppElementSelector");
@@ -102,5 +117,8 @@
     function showCopyMessage(message) {
       $("#qbppPopupMessage").html(message).fadeIn().delay(4000).fadeOut();
     }
+
+    // qbpp color picker
+    $('.qbpp-color-picker').wpColorPicker();
   });
 })(jQuery);

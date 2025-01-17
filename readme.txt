@@ -1,7 +1,7 @@
 === Quick Build Promo Popup ===
 Contributors: mofazzalhossain
 Donate link: https://www.fiverr.com/mofazzal98
-Tags: popup, promotion, discount, marketing
+Tags: popup, custom popup, popups, pop up, my popup
 Requires at least: 4.7
 Tested up to: 6.7.1
 Stable tag: 1.0.0

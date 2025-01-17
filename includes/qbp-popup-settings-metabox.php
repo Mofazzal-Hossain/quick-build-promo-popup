@@ -7,7 +7,7 @@ function qbpp_add_meta_box()
 {
     add_meta_box(
         'qbp_popup_settings',
-        __('Popup Settings', 'quick-build-promo-popup'),
+        __('Popup', 'quick-build-promo-popup'),
         'qbp_popup_settings_display',
         'qbp-popup',
         'advanced',
@@ -28,7 +28,7 @@ function qbp_popup_settings_display($post)
         'qbp_popup_display', 'qbpp_display_popup_delay',
         'qbp_popup_auto_hide', 'qbp_popup_hide_delay',
         'qbpp_element_selector', 'qbp_popup_size',
-        'qbpp_custom_width', 'qbpp_custom_height',
+        'qbpp_custom_width', 'qbpp_custom_height', 'qbpp_template',
     ];
 
     foreach ($meta_fields as $field) {
@@ -81,7 +81,7 @@ function qbpp_save_meta_box_data($post_id)
         'qbp_popup_display', 'qbpp_display_popup_delay',
         'qbp_popup_auto_hide', 'qbp_popup_hide_delay',
         'qbpp_element_selector', 'qbp_popup_size',
-        'qbpp_custom_width', 'qbpp_custom_height',
+        'qbpp_custom_width', 'qbpp_custom_height', 'qbpp_template',
     ];
 
     foreach ($fields as $field) {

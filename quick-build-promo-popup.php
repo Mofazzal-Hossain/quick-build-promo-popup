@@ -12,13 +12,13 @@
  * Domain Path:       /languages
 */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
 // Define a QBPP_VERSION constant
 define('QBPP_VERSION', '1.0.0');
 define('QBPP_PLUGIN_DIR', plugin_dir_url(__FILE__));
-define('QBPP_PUBLIC_DIR', QBPP_PLUGIN_DIR . 'public');
-define('QBPP_ADMIN_DIR', QBPP_PLUGIN_DIR . 'admin');
+define('QBPP_PUBLIC_DIR', QBPP_PLUGIN_DIR . 'assets/public');
+define('QBPP_ADMIN_DIR', QBPP_PLUGIN_DIR . 'assets/admin');
 
 
 
@@ -38,10 +38,11 @@ function qbpp_admin_assets_enqueue($screen)
         wp_enqueue_script('wp-editor');
         wp_enqueue_script('wp-mediaelement');
         wp_enqueue_style('wp-editor');
-
+        wp_enqueue_style( 'wp-color-picker');
         wp_enqueue_style('qbpp-admin-style-css', QBPP_ADMIN_DIR . '/css/admin-style.css', array(), QBPP_VERSION);
+        wp_enqueue_style('qbpp-admin-remixicon-css', QBPP_ADMIN_DIR . '/css/remixicon.css', array(), QBPP_VERSION);
         wp_enqueue_script('qbpp-admin-gallery-js', QBPP_ADMIN_DIR . '/js/gallery-media.js', array('jquery'), QBPP_VERSION, true);
-        wp_enqueue_script('qbpp-admin-main-js', QBPP_ADMIN_DIR . '/js/admin-main.js', array('jquery'), QBPP_VERSION, true);
+        wp_enqueue_script('qbpp-admin-main-js', QBPP_ADMIN_DIR . '/js/admin-main.js', array('jquery', 'wp-color-picker'), QBPP_VERSION, true);
     }
 }
 add_action('admin_enqueue_scripts', 'qbpp_admin_assets_enqueue');

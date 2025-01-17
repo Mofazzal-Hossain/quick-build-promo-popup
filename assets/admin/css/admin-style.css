@@ -1,72 +1,132 @@
+
+@font-face {
+  font-family: 'remixicon';
+  src: url('../fonts/remixicon.woff2') format('woff2'),
+       url('../fonts/remixicon.ttf') format('truetype');
+  font-style: normal;
+}
+
+.qbpp-flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+.qbpp-column{
+  flex-direction: column;
+}
+
 body.post-type-qbp-popup {
   background-color: #f0f0f1;
   line-height: 1.4em;
 }
 
-.qbp-popup-settings .qbpp-group-wrap {
+.qbpp-tabs-wrap .nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 15px 9px;
+  background: #f6f6f6;
+  margin: 0;
+  border-bottom: 1px solid #2271b1ab;
+  position: sticky;
+  top: 24px;
+  z-index: 999;
+  user-select: none;
+}
+.qbpp-tabs-wrap .nav-tabs .nav-link {
+  background: transparent;
+  color: #444;
+  padding: 12px 25px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.qbpp-tabs-wrap .nav-tabs .nav-link i{
+  font-size: 18px;
+  padding-top: 4px;
+}
+.qbpp-tabs-wrap .nav-tabs .nav-link.active,
+.qbpp-tabs-wrap .nav-tabs .nav-link:hover{
+  background: #2271b1;
+  color: #fff;
+  border-color: #2271b1;
+}
+.qbpp-tabs-wrap .tab-content .tab-pane{
+  display: none;
+}
+.qbpp-tabs-wrap .tab-content .tab-pane.active{
+  display: block;
+}
+.qbpp-tabs-wrap .qbpp-group-wrap {
   border-bottom: 1px solid #eee;
 }
-.qbp-popup-settings {
+.qbpp-tabs-wrap {
   margin: -6px -12px -12px -12px;
 }
-.qbp-popup-settings .qbpp-group-wrap {
+.qbpp-tabs-wrap .qbpp-group-wrap {
   display: flex;
 }
-.qbp-popup-settings .qbpp-group-wrap .qbpp-label-box {
+.qbpp-tabs-wrap .qbpp-group-wrap .qbpp-label-box {
   font-weight: 700;
   padding: 0;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.4;
   background-color: #f9f9f9;
-  width: 20%;
-  padding: 15px;
+  width: 16%;
+  padding: 25px 15px;
 }
-.qbp-popup-settings .qbpp-group-wrap .qbpp-field-box {
+.qbpp-tabs-wrap .qbpp-group-wrap .qbpp-field-box {
   flex: 1;
-  padding: 15px;
+  padding: 25px;
   box-sizing: border-box;
   width: 100%;
 }
-.qbp-popup-settings .qbpp-group-wrap .qbpp-field-box input {
+.qbpp-tabs-wrap .qbpp-group-wrap .qbpp-field-box input {
   margin-top: 0px;
 }
-.qbp-popup-settings .qbpp-group-wrap .qbpp-field-box .form-control {
+.qbpp-tabs-wrap .qbpp-group-wrap .qbpp-field-box .form-control {
   width: 100%;
   display: block;
   border-radius: 3px;
   border: 1px solid #8c8f94;
   height: 35px;
 }
-.qbp-popup-settings .qbp-popup-hide-delay {
+.qbpp-tabs-wrap .qbp-popup-hide-delay {
   margin-top: 15px;
   flex-direction: column;
   gap: 8px;
   border: 0;
 }
-.qbp-popup-settings .qbp-popup-hide-delay label {
+.qbpp-tabs-wrap .qbp-popup-hide-delay label {
   display: block;
   font-weight: 600;
 }
-.qbp-popup-settings .form-check-label {
+.qbpp-tabs-wrap .form-check-label {
   cursor: pointer;
   user-select: none;
   font-weight: 400;
   font-size: 14px;
 }
 
-.qbp-popup-settings .form-check {
+.qbpp-tabs-wrap .form-check {
   margin-bottom: 8px;
 }
-.qbp-popup-settings .form-check:last-child {
+.qbpp-tabs-wrap .form-check:last-child {
   margin-bottom: 0;
 }
-.qbp-popup-settings .qbpp-label-info {
+.qbpp-tabs-wrap .qbpp-label-info {
   display: block;
   font-weight: 400;
   font-size: 12px;
   margin-top: 5px;
 }
-.qbp-popup-settings .qbp-popup-hide-delay .qbpp-label-info {
+.qbpp-tabs-wrap .qbp-popup-hide-delay .qbpp-label-info {
   margin-top: -1px;
 }
 .qbpp-image-container {
@@ -265,19 +325,19 @@ body.post-type-qbp-popup {
 .qbpp-field-box .template-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 24px;
 }
 
 .template-wrapper label.radio-card {
   cursor: pointer;
-  flex: 1;
+  flex-basis: calc(33.33% - 18px);
   user-select: none;
 }
 
 .template-wrapper label.radio-card .card-content-wrapper {
   background: #fff;
   border-radius: 6px;
-  height: 150px;
+  height: 230px;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -344,16 +404,19 @@ body.post-type-qbp-popup {
   visibility: hidden;
 }
 
-.template-wrapper input[type="radio"]:checked + .card-content-wrapper {
-  box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.5), 0 0 0 2px #3057d5;
+.template-wrapper input[type="radio"]:checked + .card-content-wrapper,
+.template-wrapper label.radio-card .card-content-wrapper:hover {
+  box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.5), 0 0 0 2px #2271b1;
 }
-
+.template-wrapper label.radio-card.qbpp-cooming-soon .card-content-wrapper:hover{
+  box-shadow: none;
+}
 .template-wrapper
   input[type="radio"]:checked
   + .card-content-wrapper
   .check-icon {
-  background: #3057d5;
-  border-color: #3057d5;
+  background: #2271b1;
+  border-color: #2271b1;
   transform: scale(1.2);
 }
 
@@ -382,8 +445,7 @@ body.post-type-qbp-popup {
 }
 @media only screen and (max-width: 1600.98px) {
   .template-wrapper label.radio-card {
-    flex: auto;
-    flex-basis: calc(50% - 15px);
+    flex-basis: calc(50% - 8px);
   }
   .qbpp-field-box .template-wrapper {
     gap: 16px;
@@ -403,32 +465,32 @@ body.post-type-qbp-popup {
   }
 }
 @media only screen and (max-width: 1199.98px) {
-  .qbp-popup-settings .qbpp-group-wrap {
+  .qbpp-tabs-wrap .qbpp-group-wrap {
     flex-direction: column;
     flex-wrap: wrap;
     overflow: hidden;
   }
-  .qbp-popup-settings .qbpp-group-wrap .qbpp-label-box {
+  .qbpp-tabs-wrap .qbpp-group-wrap .qbpp-label-box {
     width: 100%;
   }
 
-  .qbp-popup-settings .qbpp-group-wrap {
+  .qbpp-tabs-wrap .qbpp-group-wrap {
     flex-direction: row;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .qbp-popup-settings .qbpp-group-wrap {
+  .qbpp-tabs-wrap .qbpp-group-wrap {
     flex-direction: column;
     flex-wrap: wrap;
     overflow: hidden;
   }
-  .qbp-popup-settings .qbpp-group-wrap .qbpp-label-box {
+  .qbpp-tabs-wrap .qbpp-group-wrap .qbpp-label-box {
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 575.98px) {
-  .qbp-popup-settings .qbpp-group-wrap {
+  .qbpp-tabs-wrap .qbpp-group-wrap {
     flex-direction: row;
   }
   .qbpp-field-box .template-wrapper {
